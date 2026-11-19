@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solhaven — Heat on the Coast</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<canvas id="game" aria-label="Solhaven: an open-world crime game. Drive, explore the city, take jobs and lose the cops."></canvas>
+
+<!-- HUD -->
+<div id="hud">
+  <div id="top-left">
+    <div class="bar-row">
+      <span class="bar-label">HP</span>
+      <div class="bar"><div id="health-fill"></div></div>
+    </div>
+    <div class="bar-row" id="armor-row">
+      <span class="bar-label">AR</span>
+      <div class="bar"><div id="armor-fill"></div></div>
+    </div>
+    <div id="money">$250</div>
+  </div>
+  <div id="top-right">
+    <div id="stars">☆☆☆☆☆</div>
+    <div id="clock">15:30</div>
+    <div id="district">Downtown Solhaven</div>
+    <div id="street">Central Ave</div>
+  </div>
+  <div id="minimap-wrap"><canvas id="minimap" width="180" height="180"></canvas></div>
+  <div id="bottom-right">
+    <div id="speed">On foot</div>
+    <div id="weapon">PISTOL · 48</div>
+    <div id="controls-hint">WASD move · F car · E interact · Mouse aim · Esc pause</div>
+  </div>
+  <div id="objective"><span id="objective-text"></span></div>
+  <div id="banner"><div id="banner-title"></div><div id="banner-sub"></div></div>
+  <div id="flash"></div>
+  <div id="notify"></div>
+  <div id="dialog">
+    <div id="dialog-title"></div>
+    <div id="dialog-lines"></div>
+    <div class="dialog-foot">Press E to continue</div>
+  </div>
+  <div id="interact"></div>
+</div>
+
+<!-- Title screen -->
+<div id="menu" class="overlay">
+  <div class="menu-inner">
+    <div id="menu-kicker">AN OPEN-WORLD CRIME GAME</div>
+    <h1 id="menu-title">SOLHAVEN</h1>
+    <div id="menu-sub">Heat on the Coast</div>
+    <p class="menu-blurb">Luna Vega is back in Solhaven — sun, salt, and trouble.
+      Steal cars, run jobs for Sal, dodge the SPPD, and take the city for yourself.</p>
+    <div class="menu-buttons">
+      <button id="btn-new" class="btn primary">New Game</button>
+      <button id="btn-continue" class="btn">Continue</button>
+      <button id="btn-help" class="btn">How to Play</button>
+    </div>
+    <div class="menu-foot">Keyboard + mouse · Progress saves at the hideout · M mutes sound</div>
+  </div>
+</div>
+
+<!-- Help -->
+<div id="help" class="overlay">
+  <div class="panel">
+    <h2>How to Play</h2>
+    <div class="help-grid">
+      <div><b>WASD / Arrows</b><span>Move on foot · drive</span></div>
+      <div><b>Shift</b><span>Sprint</span></div>
+      <div><b>Mouse</b><span>Aim · click to shoot</span></div>
+      <div><b>F</b><span>Enter / exit a car</span></div>
+      <div><b>E</b><span>Talk · shops · save</span></div>
+      <div><b>Space</b><span>Handbrake</span></div>
+      <div><b>1 / 2 / 3 / Q</b><span>Switch weapon</span></div>
+      <div><b>Esc</b><span>Pause</span></div>
+      <div><b>M</b><span>Mute</span></div>
+    </div>
+    <p>Crimes raise your wanted level. Lose the cops by breaking line of sight,
+      or pay QuickFix Auto for a respray. Jobs start at Sal’s garage (S on the
+      map). Your hideout saves the game.</p>
+    <button id="btn-help-close" class="btn primary">Got it</button>
+  </div>
+</div>
+
+<!-- Pause -->
+<div id="pause" class="overlay">
+  <div class="panel">
+    <h2>Paused</h2>
+    <div class="menu-buttons">
+      <button id="btn-resume" class="btn primary">Resume</button>
+      <button id="btn-save" class="btn">Save Game</button>
+      <button id="btn-quit" class="btn">Quit to Title</button>
+    </div>
+  </div>
+</div>
+
+<!-- Busted / Wasted -->
+<div id="gameover" class="overlay">
+  <div class="panel">
+    <h2 id="gameover-title">WASTED</h2>
+    <p id="gameover-sub"></p>
+    <div class="menu-buttons">
+      <button id="btn-retry" class="btn primary">Try Again</button>
+      <button id="btn-over-title" class="btn">Title Screen</button>
+    </div>
+  </div>
+</div>
+
+<p id="status" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
